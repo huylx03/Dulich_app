@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sửa Khách Hàng</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1>Sửa Khách Hàng</h1>
+    </div>
+
+    <div class="container">
+        <form action="{{ url_for('sua_khach_hang', UserID=khach_hang['UserID']) }}" method="POST">
+            <label for="Full_Name">Tên Khách Hàng:</label>
+            <input type="text" id="Full_Name" name="Full_Name" value="{{ khach_hang['Full_Name'] }}" required>
+            
+            <label for="ID_number">Số ID:</label>
+            <input type="text" id="ID_number" name="ID_number" value="{{ khach_hang['ID_number'] }}" required>
+
+            <label for="IdType">Loại ID:</label>
+            <input type="text" id="IdType" name="IdType" value="{{ khach_hang['IdType'] }}" required>
+
+            <label for="Phone_number">Số Điện Thoại:</label>
+            <input type="text" id="Phone_number" name="Phone_number" value="{{ khach_hang['Phone_number'] }}" required>
+
+            <label for="Email">Email:</label>
+            <input type="email" id="Email" name="Email" value="{{ khach_hang['Email'] }}">
+
+            <label for="Address">Địa Chỉ:</label>
+            <input type="text" id="Address" name="Address" value="{{ khach_hang['Address'] }}">
+
+            <input type="submit" value="Cập Nhật Khách Hàng">
+        </form>
+    </div>
+</body>
+</html>

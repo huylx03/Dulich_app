@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách tour</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Danh sách các tour</h1>
+
+        <!-- Form tìm kiếm tour -->
+        <form action="/tim-kiem-tour" method="GET">
+            <label for="TourName">Tìm kiếm theo tên tour:</label>
+            <input type="text" id="TourName" name="TourName" placeholder="Nhập tên tour" value="{{ request.args.get('TourName', '') }}">
+            <button type="submit">Tìm kiếm</button>
+        </form>
+
+        <!-- Hiển thị danh sách tour -->
+        <h2>Kết quả:</h2>
+        <ul>
+            {% if tours %}
+                {% for tour in tours %}
+                    <li>
+                        <strong>{{ tour.TourName }}</strong> - Nơi xuất phát: {{ tour.Departure_Location }} - Nơi đến: {{ tour.Destination }} - Giá vé: {{ tour.Price }} VNĐ
+                        <!-- Link chỉnh sửa -->
+                        
+                        <br>
+                    </li>
+                {% endfor %}
+            {% else %}
+                <p>Không có kết quả phù hợp.</p>
+            {% endif %}
+        </ul>
+
+    </div>
+</body>
+</html>
